@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:spotsound/pages/_home/home_page.dart';
 import 'package:spotsound/pages/_home/search_page.dart';
+import 'package:iconify_flutter/iconify_flutter.dart';
+import 'package:iconify_flutter/icons/material_symbols.dart';
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({super.key});
@@ -19,9 +21,8 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: const Color(0Xff121212),
         actions: [
           IconButton(
             onPressed: () {},
@@ -41,30 +42,35 @@ class _NavigationPageState extends State<NavigationPage> {
       ),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
+        elevation: 0.0,
+        backgroundColor: const Color(0xff121212),
+        selectedItemColor: const Color(0xff12CB00),
+        unselectedItemColor: Colors.white,
         type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            label: 'Home',
-            icon: Icon(
-              Icons.home,
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: 'Search',
-            icon: Icon(
-              Icons.search,
-            ),
-          )
-        ],
+        selectedFontSize: 14,
+        unselectedFontSize: 14,
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
             _currentIndex = index;
           });
         },
+        items: const [
+          BottomNavigationBarItem(
+            label: 'Inicio',
+            icon: Iconify(
+              MaterialSymbols.home,
+              size: 30,
+            ),
+          ),
+          BottomNavigationBarItem(
+            label: 'Buscar',
+            icon: Iconify(
+              MaterialSymbols.search,
+              size: 30,
+            ),
+          ),
+        ],
       ),
     );
   }
