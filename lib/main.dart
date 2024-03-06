@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spotsound/pages/_home/home_page.dart';
+import 'package:spotsound/pages/navigation/navigation_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'SpotSound',
-      home: HomePage(),
+      home: NavigationPage(),
     );
   }
 }
