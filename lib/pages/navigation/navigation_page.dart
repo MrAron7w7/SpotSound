@@ -3,6 +3,7 @@ import 'package:spotsound/pages/_home/home_page.dart';
 import 'package:spotsound/pages/_home/search_page.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/material_symbols.dart';
+import 'package:spotsound/themes/app_color.dart';
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({super.key});
@@ -41,33 +42,61 @@ class _NavigationPageState extends State<NavigationPage> {
         ),
       ),
       body: _pages[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        elevation: 0.0,
-        backgroundColor: const Color(0xff121212),
-        selectedItemColor: const Color(0xff12CB00),
-        unselectedItemColor: Colors.white,
-        type: BottomNavigationBarType.fixed,
-        selectedFontSize: 14,
-        unselectedFontSize: 14,
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-            label: 'Inicio',
+      extendBody: true,
+      bottomNavigationBar: _buildBottomNavigationBar(),
+    );
+  }
+
+  Widget _buildBottomNavigationBar() {
+    return SizedBox(
+      height: 60,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _buildNavigationItem(
             icon: Iconify(
               MaterialSymbols.home,
               size: 30,
+              color: _currentIndex == 0 ? AppColor.white : AppColor.grisOscuro,
             ),
+            label: 'Home',
+            index: 0,
           ),
-          BottomNavigationBarItem(
-            label: 'Buscar',
+          _buildNavigationItem(
             icon: Iconify(
               MaterialSymbols.search,
               size: 30,
+              color: _currentIndex == 1 ? AppColor.white : AppColor.grisOscuro,
+            ),
+            label: 'Search',
+            index: 1,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildNavigationItem({
+    required String label,
+    required int index,
+    required Iconify icon,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _currentIndex = index;
+        });
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          icon,
+          const SizedBox(height: 5),
+          Text(
+            label,
+            style: TextStyle(
+              color: _currentIndex == index ? AppColor.white : Colors.grey,
+              fontSize: 12,
             ),
           ),
         ],
