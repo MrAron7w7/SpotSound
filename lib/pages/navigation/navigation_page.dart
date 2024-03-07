@@ -22,25 +22,6 @@ class _NavigationPageState extends State<NavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0Xff121212),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.notifications,
-              color: Colors.white,
-            ),
-          ),
-        ],
-        title: const Text(
-          'Good Morning',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
       body: _pages[_currentIndex],
       extendBody: true,
       bottomNavigationBar: _buildBottomNavigationBar(),
