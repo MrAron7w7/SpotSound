@@ -12,9 +12,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final images = [
-    'https://i.pinimg.com/originals/a5/e9/c0/a5e9c053107da7a9653a438a89ef7deb.jpg',
-    'https://pm1.aminoapps.com/6394/5bbc89334b16b4ddafc7f75b54500d98088eb5f3_00.jpg',
-    'https://i.pinimg.com/originals/78/bf/b7/78bfb77ffe728139232a7bc26e014ee7.jpg',
+    'https://www.eluniverso.com/resizer/bkcImPcpjFZ8ieJ9eLCNGvkIqxU=/893x670/smart/filters:quality(70)/cloudfront-us-east-1.images.arcpublishing.com/eluniverso/IJCIO37F45GWLHCY6XKRV3LDKE.jpg',
+    'https://i.scdn.co/image/ab67706c0000da84cf4599e4d4bf377a0aef5ab8',
+    'https://www.expreso.com.pe/wp-content/uploads/2022/05/Morat.jpg',
   ];
   @override
   Widget build(BuildContext context) {
@@ -34,21 +34,22 @@ class _HomePageState extends State<HomePage> {
           children: [
             const Gap(30),
             const Text(
-              '  Tus canciones populares',
+              '  Reproducido reciente...',
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: AppColor.white,
+                color: AppColor.grisClaro,
               ),
             ),
-            const Gap(30),
+            const Gap(20),
             // Carousel de imagenes
             CarouselSlider(
               items: images.map((image) {
                 return Container(
                   width: MediaQuery.of(context).size.width,
-                  margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                  margin: const EdgeInsets.symmetric(horizontal: 15.0),
                   decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
                     image: DecorationImage(
                       image: NetworkImage(image),
                       fit: BoxFit.cover,
@@ -57,9 +58,11 @@ class _HomePageState extends State<HomePage> {
                 );
               }).toList(),
               options: CarouselOptions(
-                autoPlay: true,
-                enlargeCenterPage: true,
-                aspectRatio: 2.0,
+                //autoPlay: true,
+                //enlargeCenterPage: true,
+                enlargeFactor: 1.0,
+                aspectRatio: 2,
+                height: 150,
               ),
             ),
           ],

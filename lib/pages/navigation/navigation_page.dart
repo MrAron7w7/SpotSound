@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotsound/pages/_home/home_page.dart';
-import 'package:spotsound/pages/_home/search_page.dart';
+import 'package:spotsound/pages/_music/music_page.dart';
+import 'package:spotsound/pages/_search/search_page.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/material_symbols.dart';
 import 'package:spotsound/themes/app_color.dart';
@@ -18,69 +19,67 @@ class _NavigationPageState extends State<NavigationPage> {
   final _pages = [
     const HomePage(),
     const SearchPage(),
+    const MusicPage(),
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[_currentIndex],
-      extendBody: true,
-      bottomNavigationBar: _buildBottomNavigationBar(),
-    );
-  }
-
-  Widget _buildBottomNavigationBar() {
-    return SizedBox(
-      height: 60,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _buildNavigationItem(
-            icon: Iconify(
-              MaterialSymbols.home,
-              size: 30,
-              color: _currentIndex == 0 ? AppColor.white : AppColor.grisOscuro,
-            ),
-            label: 'Home',
-            index: 0,
-          ),
-          _buildNavigationItem(
-            icon: Iconify(
-              MaterialSymbols.search,
-              size: 30,
-              color: _currentIndex == 1 ? AppColor.white : AppColor.grisOscuro,
-            ),
-            label: 'Search',
-            index: 1,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildNavigationItem({
-    required String label,
-    required int index,
-    required Iconify icon,
-  }) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _currentIndex = index;
-        });
-      },
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          icon,
-          const SizedBox(height: 5),
-          Text(
-            label,
-            style: TextStyle(
-              color: _currentIndex == index ? AppColor.white : Colors.grey,
-              fontSize: 12,
+      //extendBody: true,
+      bottomNavigationBar: NavigationBarTheme(
+        data: const NavigationBarThemeData(
+          labelTextStyle: MaterialStatePropertyAll(
+            TextStyle(
+              color: Color(0xff85B0EF),
+              fontWeight: FontWeight.bold,
             ),
           ),
-        ],
+        ),
+        child: NavigationBar(
+          backgroundColor: AppColor.negro,
+          indicatorColor: const Color(0xff343A4A),
+          labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+          height: 60,
+          selectedIndex: _currentIndex,
+          onDestinationSelected: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          elevation: 0.0,
+          destinations: [
+            NavigationDestination(
+              icon: Iconify(
+                MaterialSymbols.home,
+                size: 25,
+                color: _currentIndex == 0
+                    ? const Color(0xff85B0EF)
+                    : AppColor.grisOscuro,
+              ),
+              label: 'Home',
+            ),
+            NavigationDestination(
+              icon: Iconify(
+                MaterialSymbols.search,
+                size: 25,
+                color: _currentIndex == 1
+                    ? const Color(0xff85B0EF)
+                    : AppColor.grisOscuro,
+              ),
+              label: 'Search',
+            ),
+            NavigationDestination(
+              icon: Iconify(
+                MaterialSymbols.music_note,
+                size: 25,
+                color: _currentIndex == 2
+                    ? const Color(0xff95B9F3)
+                    : AppColor.grisOscuro,
+              ),
+              label: 'Music',
+            ),
+          ],
+        ),
       ),
     );
   }
