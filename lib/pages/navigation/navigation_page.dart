@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spotsound/pages/_home/home_page.dart';
 import 'package:spotsound/pages/_music/music_page.dart';
+import 'package:spotsound/pages/_player/player_music.dart';
 import 'package:spotsound/pages/_search/search_page.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/material_symbols.dart';
@@ -20,6 +21,7 @@ class _NavigationPageState extends State<NavigationPage> {
     const HomePage(),
     const SearchPage(),
     const MusicPage(),
+    const PlayerMusic()
   ];
   @override
   Widget build(BuildContext context) {
@@ -77,6 +79,16 @@ class _NavigationPageState extends State<NavigationPage> {
                     : AppColor.grisOscuro,
               ),
               label: 'Music',
+            ),
+            NavigationDestination(
+              icon: Iconify(
+                MaterialSymbols.play_services,
+                size: 25,
+                color: _currentIndex == 3
+                    ? const Color(0xff95B9F3)
+                    : AppColor.grisOscuro,
+              ),
+              label: 'Player',
             ),
           ],
         ),

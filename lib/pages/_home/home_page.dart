@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   final images = [
     'https://www.eluniverso.com/resizer/bkcImPcpjFZ8ieJ9eLCNGvkIqxU=/893x670/smart/filters:quality(70)/cloudfront-us-east-1.images.arcpublishing.com/eluniverso/IJCIO37F45GWLHCY6XKRV3LDKE.jpg',
     'https://i.scdn.co/image/ab67706c0000da84cf4599e4d4bf377a0aef5ab8',
-    'https://www.expreso.com.pe/wp-content/uploads/2022/05/Morat.jpg',
+    //'https://www.expreso.com.pe/wp-content/uploads/2022/05/Morat.jpg',
   ];
   @override
   Widget build(BuildContext context) {
