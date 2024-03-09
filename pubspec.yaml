@@ -37,6 +37,8 @@ dependencies:
   iconify_flutter: ^0.0.5
   carousel_slider: ^4.2.1
   gap: ^3.0.1
+  on_audio_query: ^2.9.0
+  audioplayers: ^5.2.1
   #dot_navigation_bar: ^1.0.2
 
 dev_dependencies:

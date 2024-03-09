@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:spotsound/pages/_home/home_page.dart';
 import 'package:spotsound/pages/_music/music_page.dart';
 import 'package:spotsound/pages/_player/player_music.dart';
-import 'package:spotsound/pages/_search/search_page.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:iconify_flutter/icons/material_symbols.dart';
+import 'package:spotsound/pages/_settings/setting_page.dart';
 import 'package:spotsound/themes/app_color.dart';
 
 class NavigationPage extends StatefulWidget {
@@ -18,10 +17,9 @@ class _NavigationPageState extends State<NavigationPage> {
   int _currentIndex = 0;
 
   final _pages = [
-    const HomePage(),
-    const SearchPage(),
     const MusicPage(),
-    const PlayerMusic()
+    const PlayerMusic(),
+    const SettingPage(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -50,45 +48,56 @@ class _NavigationPageState extends State<NavigationPage> {
           },
           elevation: 0.0,
           destinations: [
-            NavigationDestination(
-              icon: Iconify(
-                MaterialSymbols.home,
-                size: 25,
-                color: _currentIndex == 0
-                    ? const Color(0xff85B0EF)
-                    : AppColor.grisOscuro,
-              ),
-              label: 'Home',
-            ),
-            NavigationDestination(
-              icon: Iconify(
-                MaterialSymbols.search,
-                size: 25,
-                color: _currentIndex == 1
-                    ? const Color(0xff85B0EF)
-                    : AppColor.grisOscuro,
-              ),
-              label: 'Search',
-            ),
+            // NavigationDestination(
+            //   icon: Iconify(
+            //     MaterialSymbols.home,
+            //     size: 25,
+            //     color: _currentIndex == 0
+            //         ? const Color(0xff85B0EF)
+            //         : AppColor.grisOscuro,
+            //   ),
+            //   label: 'Home',
+            // ),
+            // NavigationDestination(
+            //   icon: Iconify(
+            //     MaterialSymbols.search,
+            //     size: 25,
+            //     color: _currentIndex == 1
+            //         ? const Color(0xff85B0EF)
+            //         : AppColor.grisOscuro,
+            //   ),
+            //   label: 'Search',
+            // ),
             NavigationDestination(
               icon: Iconify(
                 MaterialSymbols.music_note,
                 size: 25,
-                color: _currentIndex == 2
+                color: _currentIndex == 0
                     ? const Color(0xff95B9F3)
                     : AppColor.grisOscuro,
               ),
               label: 'Music',
             ),
+
             NavigationDestination(
               icon: Iconify(
                 MaterialSymbols.play_services,
                 size: 25,
-                color: _currentIndex == 3
+                color: _currentIndex == 1
                     ? const Color(0xff95B9F3)
                     : AppColor.grisOscuro,
               ),
               label: 'Player',
+            ),
+            NavigationDestination(
+              icon: Iconify(
+                MaterialSymbols.settings,
+                size: 25,
+                color: _currentIndex == 2
+                    ? const Color(0xff95B9F3)
+                    : AppColor.grisOscuro,
+              ),
+              label: 'Settings',
             ),
           ],
         ),
